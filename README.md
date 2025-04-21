@@ -43,9 +43,8 @@
 
 ## Screenshots
 
-> ![Placeholder for Screenshot](./public/Screenshot 2025-04-21 232214.png)
+> ![Murasaki](./Screenshot 2025-04-21 232214.png)
 
-> Add screenshots of Journal, History, Trends, and Theme Toggle views here!
 
 ---
 
