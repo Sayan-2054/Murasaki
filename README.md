@@ -1,4 +1,4 @@
-# Murasaki - A Microjournaling and Mood Tracking App 🌿
+# Murasaki - A Microjournaling and Mood Tracking App 🌿💜.
 
 ## Overview
 
