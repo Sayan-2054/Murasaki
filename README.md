@@ -43,7 +43,7 @@
 
 ## Screenshots
 
-> ![Murasaki](./src/assets/Screenshot%2025-04-21%232214.png)
+> ![Murasaki](./src/assets/SS.png)
 
 
 ---
