@@ -74,8 +74,7 @@ npm run dev
 4. **Visit in your browser:**
 
 Open [http://localhost:5173](http://localhost:5173) to view the app.
-
-> Note: Adjust the URL if using a different development server (e.g., Vite, CRA).
+Deployed link: [Murasaki](https://murasaki-nu.vercel.app/)
 
 ---
 
