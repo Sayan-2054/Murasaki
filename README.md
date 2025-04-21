@@ -73,7 +73,8 @@ npm run dev
 
 4. **Visit in your browser:**
 
-Open [http://localhost:5173](http://localhost:5173) to view the app.
+Open [http://localhost:5173](http://localhost:5173) to view the app after cloning. <br/>
+
 Deployed link: [Murasaki](https://murasaki-nu.vercel.app/)
 
 ---
