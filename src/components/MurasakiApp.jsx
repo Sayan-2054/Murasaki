@@ -95,9 +95,12 @@ export default function MurasakiApp() {
         this.x = Math.random() * canvas.width;
         this.y = Math.random() * canvas.height;
         this.size = Math.random() * 5 + 1;
+        this.minSize = Math.random() * 0.5 + 0.5; // Minimum size before respawning
         this.speedX = Math.random() * 0.5 - 0.25;
         this.speedY = Math.random() * 0.5 - 0.25;
         this.opacity = Math.random() * 0.5 + 0.1;
+        this.fadeRate = Math.random() * 0.01 + 0.005; // How quickly particles shrink
+        this.respawnChance = 0.001; // Chance to respawn each frame even if not tiny
         // Use different color ranges for dark/light modes
         this.baseColor = isDarkMode ? [180, 120, 255] : [138, 43, 226]; // RGB values
       }
@@ -106,10 +109,30 @@ export default function MurasakiApp() {
         this.x += this.speedX;
         this.y += this.speedY;
         
-        if (this.size > 0.2) this.size -= 0.01;
+        // Decrease size gradually but not below minimum
+        if (this.size > this.minSize) {
+          this.size -= this.fadeRate;
+        } else if (Math.random() < 0.05) {
+          // 5% chance to reset particle if it's at minimum size
+          this.reset();
+        }
         
+        // Small chance to respawn even if not tiny
+        if (Math.random() < this.respawnChance) {
+          this.reset();
+        }
+        
+        // Bounce off edges
         if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
         if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+      }
+      
+      reset() {
+        // Respawn the particle
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.size = Math.random() * 5 + 1;
+        this.opacity = Math.random() * 0.5 + 0.1;
       }
       
       draw() {
@@ -208,6 +231,9 @@ export default function MurasakiApp() {
       minute: '2-digit'
     });
   };
+
+  // Get current year for copyright
+  const currentYear = new Date().getFullYear();
 
   return (
     <div className={`min-h-screen font-sans relative overflow-hidden transition-colors duration-300 ${
@@ -396,15 +422,27 @@ export default function MurasakiApp() {
           )}
         </div>
         
-        <footer className={`text-center text-sm ${isDarkMode ? 'text-purple-400' : 'text-purple-600'}`}>
-          <p>Murasaki - Find peace in small moments</p>
-          {isMusicPlaying && (
-            <div className="flex items-center justify-center mt-2">
-              <Music size={14} className="mr-1" />
-              <span>Ambient music playing</span>
-            </div>
-          )}
-        </footer>
+        <footer className={`text-center ${isDarkMode ? 'text-purple-400' : 'text-purple-600'} mt-10`}>
+  <div className="mb-4">
+    <p>Murasaki - Find peace in small moments</p>
+    {isMusicPlaying && (
+      <div className="flex items-center justify-center mt-2">
+        <Music size={14} className="mr-1" />
+        <span>Ambient music playing</span>
+      </div>
+    )}
+  </div>
+  
+  {/* Enhanced copyright footer */}
+  <div className={`py-4 border-t ${isDarkMode ? 'border-purple-800' : 'border-purple-200'} flex flex-col items-center`}>
+    <p className="font-light tracking-wide text-sm">
+      Designed with <span className="text-purple-500">♥</span> by Sayantan Chowdhury
+    </p>
+    <p className={`mt-1 text-xs ${isDarkMode ? 'text-purple-500' : 'text-purple-400'}`}>
+      © {currentYear} All rights reserved
+    </p>
+  </div>
+</footer>
       </div>
     </div>
   );
