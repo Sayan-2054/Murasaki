@@ -248,7 +248,7 @@ export default function MurasakiApp() {
             className={`p-2 rounded-full ${isDarkMode ? 'bg-purple-800 hover:bg-purple-700' : 'bg-purple-200 hover:bg-purple-300'} transition-colors`}
             aria-label={isMusicPlaying ? "Pause music" : "Play music"}
           >
-            {isMusicPlaying ? <VolumeX size={18} /> : <Volume2 size={18} />}
+            {isMusicPlaying ? <Volume2 size={18} /> : <VolumeX size={18} />}
           </button>
           <button 
             onClick={toggleTheme}
